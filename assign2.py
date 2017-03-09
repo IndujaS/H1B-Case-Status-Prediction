@@ -114,6 +114,3 @@ y_test =  [d[1]['CASE_STATUS'] for d in data.loc[500000:1000000,:].iterrows() if
 logreg = linear_model.LogisticRegression(C=10, multi_class='multinomial', solver='lbfgs')
 logreg.fit(X_train, y_train)
 pred = logreg.predict(X_test)
-temp = pred - y_test
-temp = numpy.matrix(temp)
-mse = temp*temp.T*1.0/len(y_test)

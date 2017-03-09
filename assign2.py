@@ -92,7 +92,11 @@ state_map = {
              'WYOMING': 52}
              
 def feature(datum):
-    feat = [1, int(datum['YEAR']), state_map[datum['STATES']]]
+    feat = [0]*54
+    feat[0] = 1
+    feat[1] = int(datum['YEAR'])
+    feat[state_map[datum['STATES']]+1] = 1
+#    feat = [1, int(datum['YEAR']), state_map[datum['STATES']]]
     return feat
 
 X_train = [feature(d[1]) for d in data.loc[:500000,:].iterrows() if d[1]['STATES'] != 'NA']
